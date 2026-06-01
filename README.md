@@ -29,8 +29,10 @@ git clone https://github.com/kaijie0074-art/agent-onboarding-skill.git ~/.claude
 
 ---
 
+> ⚠️ **装完请新开一个对话**（或重启 Claude / Codex）才会加载到这个新技能——所有 skill 都这样，不是出错。
+
 ## ▶️ 怎么用
-安装后，对 Claude / Codex 说一句即可：
+安装后（记得新开一个对话），对 Claude / Codex 说一句即可：
 - **"带我上手"** / **"教我用 agent"** / **"我是新手，想做个微信群整理但不会"**
 - 或用命令 **`/上手`**（也可 `/上手 文章转视频` 直接进某个项目）
 
