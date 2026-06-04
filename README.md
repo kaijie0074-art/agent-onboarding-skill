@@ -4,39 +4,65 @@
 
 ---
 
-## 📦 怎么安装（三选一）
+## 🚀 完整上手流程（从零到能用，三步）
 
-### 方式一：一行命令（推荐，需要电脑装了 Node.js）
-在终端运行：
-```bash
-npx skills add kaijie0074-art/agent-onboarding-skill -g
-```
-装完就能用，全局生效。
+### 第 0 步：先装好 Claude Code（已经在用的，直接跳到第 1 步）
 
-### 方式二：把活交给你的 AI（最省事，适合不想碰命令行的人）
-把这个仓库地址发给你自己的 Claude Code / Codex，对它说：
-> "帮我安装这个 skill 到 ~/.claude/skills/：https://github.com/kaijie0074-art/agent-onboarding-skill"
+这个教程是"插件"，得先有"主程序"才能用。主程序就是 **Claude Code**（也支持 OpenAI Codex）。装它需要两样东西：
 
-它会自己 clone 下来放好。
+1. **装 Node.js（一个运行环境，一次性）**
+   - 最简单：打开 https://nodejs.org ，下载 **LTS** 版本，双击安装。
+   - 或 Mac 用 Homebrew：`brew install node`
+2. **装 Claude Code**，在终端运行：
+   ```bash
+   npm install -g @anthropic-ai/claude-code
+   ```
+3. **启动并登录**：终端输入 `claude` 回车 → 首次会提示登录，按提示 `/login` 用浏览器登录一次即可。
+   > （如果你用的是 OpenAI Codex：`npm install -g @openai/codex`，启动命令是 `codex`。）
 
-### 方式三：手动放文件
-```bash
-git clone https://github.com/kaijie0074-art/agent-onboarding-skill.git ~/.claude/skills/agent-onboarding
-```
-（或下载 zip 解压到 `~/.claude/skills/agent-onboarding/`）
+> 💡 不想自己敲命令？把上面这段发给任意一个能联网的 AI 助手让它教你，或找个懂电脑的人帮忙装一次——这是唯一一次性的门槛，装好后就全靠"动嘴"了。
 
-> 可选：把仓库里的 `commands/上手.md` 拷到 `~/.claude/commands/`，就能用 `/上手` 命令直接启动。
+### 第 1 步：安装这个技能（三选一）
+
+- **一行命令（推荐）**：
+  ```bash
+  npx skills add kaijie0074-art/agent-onboarding-skill -g
+  ```
+- **把活交给你的 AI（最省事）**：把这句发给你的 Claude / Codex：
+  > "帮我安装这个 skill 到 ~/.claude/skills/：https://github.com/kaijie0074-art/agent-onboarding-skill"
+- **手动 clone**：
+  ```bash
+  git clone https://github.com/kaijie0074-art/agent-onboarding-skill.git ~/.claude/skills/agent-onboarding
+  ```
+
+> ⚠️ **装完请新开一个对话**（或重启 Claude / Codex）才会加载到这个新技能——所有 skill 都这样，不是出错。
+> 可选：把仓库里的 `commands/上手.md` 拷到 `~/.claude/commands/`，就能用 `/上手` 命令启动。
+
+### 第 2 步：开始用
+
+对 Claude / Codex 说一句：
+- **"带我上手"** / **"教我用 agent"** / **"我是新手，想做个微信群整理但不会"**
+- 或命令 **`/上手`**（也可 `/上手 文章转视频` 直达某项目）
+
+教练会：让你选一个想做的事 → 自检环境（缺工具自动帮你装）→ **先用内置样例跑一遍**（1 分钟见效）→ 再用你真实数据 → 做完告诉你"你只说了 X、Agent 做了 Y、以后你只要说这句话"。
 
 ---
 
-> ⚠️ **装完请新开一个对话**（或重启 Claude / Codex）才会加载到这个新技能——所有 skill 都这样，不是出错。
+## 🛠 各项目可能用到的工具（绝大多数零准备；缺了"教练会自检并帮你装"，不用你操心）
 
-## ▶️ 怎么用
-安装后（记得新开一个对话），对 Claude / Codex 说一句即可：
-- **"带我上手"** / **"教我用 agent"** / **"我是新手，想做个微信群整理但不会"**
-- 或用命令 **`/上手`**（也可 `/上手 文章转视频` 直接进某个项目）
+| 项目 | 可能要装的工具 | 谁来装 |
+|---|---|---|
+| 长文档总结 / 自动作业 / 名片官网(做网页) / 竞品监控 / 行业简报 / 竞赛材料 | 基本零准备（联网/读写文件/系统自带 python 即可） | —— |
+| 微信群整理（零导出版） | `@jackwener/wx-cli` | 教练自动装 |
+| 文章转短视频 | `ffmpeg` + `Pillow` | 教练自动装 |
+| 评论分析出图 | `matplotlib` | 教练自动装 |
+| 竞赛出真 PPT | `python-pptx` | 教练自动装 |
+| 竞品监控（国内动态站点） | 浏览器渲染（Playwright） | 教练自动装/启用 |
+| 名片官网**正式上线** | `vercel` / `gh` | 教练装，**你点一次浏览器登录** |
+| 飞书推送 | 群机器人 webhook 或 `@larksuite/cli` | 教练装，**你做一次飞书授权** |
+| 自动回邮件（读真实收件箱） | `himalaya` | 教练装，**你在邮箱后台开 IMAP + 生成应用密码** |
 
-教练会：选项目 → 自检环境（缺工具自动帮你装）→ **先用内置样例跑一遍**（1 分钟见效）→ 再用你自己的真实数据 → 做完告诉你"你只说了 X、Agent 做了 Y、以后你只要说这句话"。
+> 规则：**教练每进一个项目会先自检，缺工具先问你一句、同意后自动装**。只有少数"账号级"动作必须你本人点一下（邮箱开 IMAP / 上线登录托管 / 飞书授权）——这些任何工具都替不了，教练会把每一步讲清楚。多数项目（尤其"先用样例跑一遍"）**完全零准备**。
 
 ---
 
@@ -47,17 +73,14 @@ git clone https://github.com/kaijie0074-art/agent-onboarding-skill.git ~/.claude
 ## 目录结构
 ```
 agent-onboarding/
-├── SKILL.md          # 教练大脑：总流程 + 七条铁律 + 项目菜单
+├── SKILL.md          # 教练大脑：总流程 + 七条铁律 + 完整项目菜单
 ├── references/       # 12 份"带练剧本"，每个项目一份
 ├── assets/样例数据/   # 自带样例输入，"先用样例跑一遍"跨机器可用
 └── commands/上手.md   # 可选的 /上手 中文命令
 ```
 
 ## 设计原则（写进了 SKILL.md，AI 会遵守）
-一次只推进一步；能代做绝不让用户动手；每个选择给选项卡；先用样例给"小胜利"；诚实标 🟢/🟡/🔴 档位与可逆性；报错自己扛；做完必给教学闭环。
-
-## 各项目可能用到的工具（缺了 AI 会按剧本引导你自动装，多数零准备）
-微信整理 `@jackwener/wx-cli`｜文章转视频 `ffmpeg`+`Pillow`｜评论出图 `matplotlib`（中文字体防乱码）｜自动回邮件全自动版 `himalaya`（+邮箱开 IMAP/应用密码）｜飞书推送 群机器人 webhook 或 `@larksuite/cli`｜官网上线 `vercel`/`gh`/`cloudflared`｜竞品国内站 浏览器渲染(Playwright)｜竞赛出真 PPT `python-pptx`
+一次只推进一步；能代做绝不让用户动手；每个选择给选项卡；先用样例给"小胜利"；完整菜单绝不缩水；诚实标 🟢/🟡/🔴 档位与可逆性；报错自己扛；做完必给教学闭环。
 
 ## 许可
 MIT。欢迎自由使用、修改、分发。
