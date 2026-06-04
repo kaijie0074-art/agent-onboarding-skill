@@ -6,36 +6,44 @@
 
 ## 🚀 完整上手流程（从零到能用，三步）
 
-### 第 0 步：先装好 Claude Code（已经在用的，直接跳到第 1 步）
+### 第 0 步：装好 Claude Code（✅ 不需要 Node.js！）
 
-这个教程是"插件"，得先有"主程序"才能用。主程序就是 **Claude Code**（也支持 OpenAI Codex）。装它需要两样东西：
+这个教程是"插件"，得先有"主程序"——也就是 **Claude Code**。**好消息：现在装它根本不用先装 Node.js**（官方原生安装器自带一切）。三种装法，从最省事到适合老手：
 
-1. **装 Node.js（一个运行环境，一次性）**
-   - 最简单：打开 https://nodejs.org ，下载 **LTS** 版本，双击安装。
-   - 或 Mac 用 Homebrew：`brew install node`
-2. **装 Claude Code**，在终端运行：
-   ```bash
-   npm install -g @anthropic-ai/claude-code
-   ```
-3. **启动并登录**：终端输入 `claude` 回车 → 首次会提示登录，按提示 `/login` 用浏览器登录一次即可。
-   > （如果你用的是 OpenAI Codex：`npm install -g @openai/codex`，启动命令是 `codex`。）
+**① 最简单·桌面版 App（完全不碰命令行，强烈推荐零基础选这个）**
+像装普通软件一样下载双击安装，打开即用：
+- Mac：https://claude.ai/download
+- Windows：https://claude.com/download
 
-> 💡 不想自己敲命令？把上面这段发给任意一个能联网的 AI 助手让它教你，或找个懂电脑的人帮忙装一次——这是唯一一次性的门槛，装好后就全靠"动嘴"了。
+**② 命令行·原生安装（一行命令，不需要 Node，官方推荐）**
+- Mac / Linux：
+  ```bash
+  curl -fsSL https://claude.ai/install.sh | bash
+  ```
+- Windows（PowerShell）：
+  ```powershell
+  irm https://claude.ai/install.ps1 | iex
+  ```
 
-### 第 1 步：安装这个技能（三选一）
+**③ 已经装了 Node.js 的人**（老手可选）：`npm install -g @anthropic-ai/claude-code`
 
-- **一行命令（推荐）**：
+装好后：终端输入 `claude` 回车（桌面版直接打开）→ 首次按提示用浏览器登录一次。
+> ⚠️ **账号要求**：Claude Code 需要 Claude 的 **Pro / Max / Team / 企业版**付费账号登录，**免费版用不了**。没有的话先去 https://claude.ai 开通，再回来登录。
+> 💡 完全不想自己敲命令？直接选①桌面版；或把本段发给任意能联网的 AI 让它一步步教你。这是**唯一一次性门槛**，过了之后全靠动嘴。
+
+### 第 1 步：安装这个技能
+
+- 🥇 **最省事（不需要 Node，推荐）**：装好 Claude 后，直接对它说这句话——
+  > "帮我把 https://github.com/kaijie0074-art/agent-onboarding-skill 这个仓库下载安装到 ~/.claude/skills/agent-onboarding"
+
+  Claude 会自己下载、解压、放好，全程你不用敲命令。
+- ⌨️ **一行命令（需要 Node.js）**：
   ```bash
   npx skills add kaijie0074-art/agent-onboarding-skill -g
   ```
-- **把活交给你的 AI（最省事）**：把这句发给你的 Claude / Codex：
-  > "帮我安装这个 skill 到 ~/.claude/skills/：https://github.com/kaijie0074-art/agent-onboarding-skill"
-- **手动 clone**：
-  ```bash
-  git clone https://github.com/kaijie0074-art/agent-onboarding-skill.git ~/.claude/skills/agent-onboarding
-  ```
+- 🔧 **手动**：下载仓库 zip 解压到 `~/.claude/skills/agent-onboarding/`，或 `git clone` 到该位置。
 
-> ⚠️ **装完请新开一个对话**（或重启 Claude / Codex）才会加载到这个新技能——所有 skill 都这样，不是出错。
+> ⚠️ **装完请新开一个对话**（或重启 Claude）才会加载到这个新技能——所有 skill 都这样，不是出错。
 > 可选：把仓库里的 `commands/上手.md` 拷到 `~/.claude/commands/`，就能用 `/上手` 命令启动。
 
 ### 第 2 步：开始用
