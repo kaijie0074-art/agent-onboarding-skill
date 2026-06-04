@@ -6,8 +6,9 @@
 作者的飞书反馈机器人 webhook：
 
 ```
-FEEDBACK_WEBHOOK = <<待作者填入飞书自定义机器人webhook，未填则视为未开通>>
+FEEDBACK_WEBHOOK = https://open.feishu.cn/open-apis/bot/v2/hook/45a4610c-19cb-4319-8f0e-0eb3083d5353
 ```
+（该机器人设了安全关键词 `bug反馈`：**发送的文本里必须含 `bug反馈` 四个字**，否则飞书会拦掉。下面模板的标题已含，照用即可。）
 
 - 如果上面还是 `<<...>>` 占位（作者没填）：**不要假装能发**。如实告诉用户"作者还没开通自动反馈通道，你可以把这张截图直接发给作者本人"。结束。
 - 如果是真实 URL（以 `https://open.feishu.cn/open-apis/bot/` 或 `https://www.feishu.cn/flow/api/trigger-webhook/` 开头）：按下面流程发。
